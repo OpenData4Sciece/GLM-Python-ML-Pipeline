@@ -20,6 +20,9 @@ pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 
+- `app:app` loads the FastAPI app from `app.py`.
+- `--reload` enables auto-reload for development (useful for code changes, not for production).
+
 3. **Test with:**
 
 ```bash
@@ -42,6 +45,26 @@ Python_GML_ML_Pipeline/
 ├── scaler.pkl
 └── README.md
 ```
+
+---
+
+## 🐳 Run with Docker
+
+1. **Build the Docker image:**
+
+```bash
+docker build -t python-gml-ml-pipeline .
+```
+
+2. **Run the Docker container:**
+
+```bash
+docker run -p 8000:8000 python-gml-ml-pipeline
+```
+
+3. **Access the FastAPI app:**
+
+Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ---
 
