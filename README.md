@@ -4,7 +4,6 @@
 ✅ FastAPI REST endpoint  
 ✅ OpenAI summarisation for human-readable explanations
 
----
 
 ## 🔧 How to run
 
@@ -29,11 +28,8 @@ uvicorn app:app --reload
 curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"feature1": value, "feature2": value, ...}'
 ```
 
----
-
 > Replace `YOUR_API_KEY` in `app.py` with your actual OpenAI key.
 
----
 
 ## 📂 Project Structure
 
@@ -46,7 +42,6 @@ Python_GML_ML_Pipeline/
 └── README.md
 ```
 
----
 
 ## 🐳 Run with Docker
 
@@ -66,7 +61,6 @@ docker run -p 8000:8000 python-gml-ml-pipeline
 
 Open [http://localhost:8000](http://localhost:8000) in your browser.
 
----
 
 ## ✨ Author
 
@@ -74,18 +68,14 @@ Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 Made with ❤️ by **[Pierre-Henry Soria](https://pierrehenry.be)**. A super passionate & enthusiastic Problem-Solver / Senior Software Engineer. Also a true cheese 🧀, ristretto ☕️, and dark chocolate lover! 😋
 
-[![@phenrysay](https://img.shields.io/badge/x-000000?style=for-the-badge&logo=x)](https://x.com/phenrysay "Follow Me on X")  
-[![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7 "My GitHub")  
-[![YouTube Video](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/cWBuZ4DXGK4 "YouTube SucceedAI Video")
+[![@phenrysay](https://img.shields.io/badge/x-000000?style=for-the-badge&logo=x)](https://x.com/phenrysay "Follow Me on X") [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7 "My GitHub") [![YouTube Video](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/cWBuZ4DXGK4 "YouTube SucceedAI Video")
 
----
 
 ## 📌 Notes
 
 - `logistic_model.pkl` and `scaler.pkl` are **placeholders**. Train and export your own models using `joblib.dump`.
 - This project is a **modern, production-ready ML pipeline**, showcasing deployment and explainability best practices for 2025 and beyond.
 
----
 
 ### 🧠 Final Wise Principle
 
