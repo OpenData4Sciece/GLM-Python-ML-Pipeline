@@ -12,7 +12,6 @@ scaler = joblib.load('scaler.pkl')
 # Set OpenAI API key
 openai.api_key = "YOUR_API_KEY"
 
-
 @app.post('/predict')
 def predict(data: dict):
     df = pd.DataFrame([data])
@@ -41,4 +40,5 @@ Write a short, clear summary explaining this result to a business stakeholder in
         messages=[{"role": "user", "content": prompt}],
         max_tokens=100
     )
+
     return response['choices'][0]['message']['content']
