@@ -65,7 +65,7 @@ Open [http://localhost:8000](http://localhost:8000) in your browser.
 ## 🧑‍🎓 Learn More - How does this pipeline run?
 **Execution Flow:**
 
-1. **Load trained model and scaler** (using joblib).
+1. **Load trained model and scaler** (using `joblib`).
 2. **API endpoint receives JSON data** (new user or input data).
 3. **Dataframe creation & scaling** for consistency with training.
 4. **Model predicts** churn probability (or other target).
