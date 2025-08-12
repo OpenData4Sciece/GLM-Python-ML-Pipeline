@@ -33,7 +33,7 @@ You are an AI assistant. The model predicted a churn probability of {probability
 
 {input_data}
 
-Write a short, clear summary explaining this result to a business stakeholder in simple language.
+Write a short, clear summary explaining this result to a business stakeholder in simple words.
 """
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
