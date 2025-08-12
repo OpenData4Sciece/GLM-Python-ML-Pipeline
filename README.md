@@ -62,6 +62,34 @@ docker run -p 8000:8000 python-gml-ml-pipeline
 Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 
+## 🧑‍🎓 Learn More - How does this pipeline run?
+**Execution Flow:**
+
+1. **Load trained model and scaler** (using joblib).
+2. **API endpoint receives JSON data** (new user or input data).
+3. **Dataframe creation & scaling** for consistency with training.
+4. **Model predicts** churn probability (or other target).
+5. **Returns JSON response** with prediction for integration into apps or dashboards.
+
+
+✅ Run locally:
+```console
+uvicorn app:app --reload
+```
+
+✅ Run in Docker:
+```console
+docker build -t churn-api .
+docker run -p 8000:8000 churn-api
+```
+
+**Key reasons to use FastAPI:**
+1. Modern async Python framework
+2. Automatic **OpenAPI schema & Swagger docs**
+3. Production-grade performance
+4. Can be integrated into **microservices/SaaS**
+
+
 ## ✨ Author
 
 [![Pierre-Henry Soria](https://avatars0.githubusercontent.com/u/1325411?s=200)](https://ph7.me "Pierre-Henry Soria, Software Developer")
