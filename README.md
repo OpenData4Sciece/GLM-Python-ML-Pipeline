@@ -25,10 +25,28 @@ uvicorn app:app --reload
 3. **Test with:**
 
 ```bash
-curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"feature1": value, "feature2": value, ...}'
+curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"feature1": 0.5, "feature2": 1.2, "feature3": 0.8}'
 ```
 
-> Replace `YOUR_API_KEY` in `app.py` with your actual OpenAI key.
+---
+
+## 🔧 Environment Variables
+
+**Set your OpenAI API key:**
+
+**Local development:**
+```bash
+export OPENAI_API_KEY="your-actual-openai-api-key"
+```
+
+**Docker:**
+```bash
+docker run -p 8000:8000 -e OPENAI_API_KEY="your-actual-openai-api-key" python-gml-ml-pipeline
+```
+
+---
+
+> The API now uses structured data validation. Replace feature names in the request with your actual model features.
 
 
 ## 📂 Project Structure
