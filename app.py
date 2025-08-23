@@ -1,7 +1,7 @@
 import pandas as pd
 import joblib
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Dict, Any
 import openai
 import os
@@ -33,8 +33,8 @@ class CustomerData(BaseModel):
     contract_type: str
     payment_method: str
     
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "age": 45.0,
                 "tenure": 24.0,
@@ -44,6 +44,7 @@ class CustomerData(BaseModel):
                 "payment_method": "Electronic check"
             }
         }
+    )
 
 # Response model
 class PredictionResponse(BaseModel):
@@ -62,7 +63,7 @@ def predict(data: CustomerData):
     
     try:
         # Convert Pydantic model to dict for DataFrame
-        input_dict = data.dict()
+        input_dict = data.model_dump()
         df = pd.DataFrame([input_dict])
         scaled = scaler.transform(df)
         prob = model.predict_proba(scaled)[:, 1][0]
@@ -79,6 +80,17 @@ def predict(data: CustomerData):
         raise HTTPException(status_code=400, detail=f"Prediction error: {str(e)}")
 
 
+@app.get('/health')
+def health_check():
+    """Health check endpoint"""
+    return {
+        "status": "healthy",
+        "model_loaded": model is not None,
+        "scaler_loaded": scaler is not None,
+        "api_version": "1.0.0"
+    }
+
+
 def summarise_prediction(probability, input_data):
     try:
         prompt = f"""
@@ -88,12 +100,12 @@ You are an AI assistant. The model predicted a churn probability of {probability
 
 Write a short, clear summary explaining this result to a business stakeholder in simple words.
 """
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=100
         )
 
-        return response['choices'][0]['message']['content']
+        return response.choices[0].message.content
     except Exception as e:
         return f"Explanation unavailable: {str(e)}"

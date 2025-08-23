@@ -77,6 +77,7 @@ docker run -p 8000:8000 -e OPENAI_API_KEY="your_actual_openai_api_key" python-gm
 3. **Access the FastAPI app:**
 
 - **API**: [http://localhost:8000](http://localhost:8000)
+- **Health Check**: [http://localhost:8000/health](http://localhost:8000/health)
 - **Interactive Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
 - **OpenAPI Schema**: [http://localhost:8000/openapi.json](http://localhost:8000/openapi.json)
 
@@ -98,8 +99,8 @@ uvicorn app:app --reload
 
 ✅ Run in Docker:
 ```console
-docker build -t churn-api .
-docker run -p 8000:8000 churn-api
+docker build -t python-gml-ml-pipeline .
+docker run -p 8000:8000 -e OPENAI_API_KEY="your_actual_openai_api_key" python-gml-ml-pipeline
 ```
 
 **Key reasons to use FastAPI:**
