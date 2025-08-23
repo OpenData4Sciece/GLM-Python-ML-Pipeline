@@ -25,39 +25,38 @@ uvicorn app:app --reload
 3. **Test with:**
 
 ```bash
-curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"feature1": 0.5, "feature2": 1.2, "feature3": 0.8}'
+curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{
+  "age": 45.0,
+  "tenure": 24.0,
+  "monthly_charges": 79.85,
+  "total_charges": 1800.0,
+  "contract_type": "Month-to-month",
+  "payment_method": "Electronic check"
+}'
 ```
 
 ---
 
-## 🔧 Environment Variables
+## 🔑 Environment Setup
 
 **Set your OpenAI API key:**
 
-**Local development:**
 ```bash
-export OPENAI_API_KEY="your-actual-openai-api-key"
+export OPENAI_API_KEY="your_actual_openai_api_key"
 ```
-
-**Docker:**
-```bash
-docker run -p 8000:8000 -e OPENAI_API_KEY="your-actual-openai-api-key" python-gml-ml-pipeline
-```
-
----
-
-> The API now uses structured data validation. Replace feature names in the request with your actual model features.
 
 
 ## 📂 Project Structure
 
 ```
 Python_GML_ML_Pipeline/
-├── app.py
-├── requirements.txt
-├── logistic_model.pkl
-├── scaler.pkl
-└── README.md
+├── app.py                  # FastAPI application
+├── requirements.txt        # Python dependencies
+├── logistic_model.pkl     # Trained ML model (placeholder)
+├── scaler.pkl            # Feature scaler (placeholder)
+├── Dockerfile            # Container configuration
+├── .gitignore           # Git ignore rules
+└── README.md           # This file
 ```
 
 
@@ -72,12 +71,14 @@ docker build -t python-gml-ml-pipeline .
 2. **Run the Docker container:**
 
 ```bash
-docker run -p 8000:8000 python-gml-ml-pipeline
+docker run -p 8000:8000 -e OPENAI_API_KEY="your_actual_openai_api_key" python-gml-ml-pipeline
 ```
 
 3. **Access the FastAPI app:**
 
-Open [http://localhost:8000](http://localhost:8000) in your browser.
+- **API**: [http://localhost:8000](http://localhost:8000)
+- **Interactive Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **OpenAPI Schema**: [http://localhost:8000/openapi.json](http://localhost:8000/openapi.json)
 
 
 ## 🧑‍🎓 Learn More - How does this pipeline run?
