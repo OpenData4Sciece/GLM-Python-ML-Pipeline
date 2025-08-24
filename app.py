@@ -22,6 +22,8 @@ except FileNotFoundError as e:
 openai.api_key = os.environ.get("OPENAI_API_KEY", "YOUR_API_KEY")
 
 # Define input data model
+
+
 class CustomerData(BaseModel):
     """Customer data for churn prediction"""
     # Add your specific features here based on your model
@@ -32,7 +34,7 @@ class CustomerData(BaseModel):
     total_charges: float
     contract_type: str
     payment_method: str
-    
+
     model_config = ConfigDict(
         json_schema_extra={
             "example": {
@@ -47,20 +49,23 @@ class CustomerData(BaseModel):
     )
 
 # Response model
+
+
 class PredictionResponse(BaseModel):
     churn_probability: float
     explanation: str
     input_data: Dict[str, Any]
+
 
 @app.post('/predict', response_model=PredictionResponse)
 def predict(data: CustomerData):
     # Check if models are loaded
     if model is None or scaler is None:
         raise HTTPException(
-            status_code=503, 
+            status_code=503,
             detail="Model not available. Please ensure model files exist."
         )
-    
+
     try:
         # Convert Pydantic model to dict for DataFrame
         input_dict = data.model_dump()
@@ -77,7 +82,8 @@ def predict(data: CustomerData):
             input_data=input_dict
         )
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Prediction error: {str(e)}")
+        raise HTTPException(
+            status_code=400, detail=f"Prediction error: {str(e)}")
 
 
 @app.get('/health')
