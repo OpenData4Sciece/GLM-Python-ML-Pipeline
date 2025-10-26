@@ -2,7 +2,7 @@
 
 [![HowTo Data Science: Logistic Regression model churn probability](https://i1.ytimg.com/vi/JbmfmgPlpXc/sddefault.jpg)](https://www.youtube.com/watch?v=JbmfmgPlpXc)
 
-[→ Watch it directly on YouTube](https://www.youtube.com/watch?v=JbmfmgPlpXc)
+_**[→ Watch it directly on YouTube](https://www.youtube.com/watch?v=JbmfmgPlpXc)**_
 
 ✅ Logistic Regression churn prediction  
 ✅ FastAPI REST endpoint  
